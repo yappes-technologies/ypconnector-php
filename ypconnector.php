@@ -23,13 +23,14 @@ class yappesLibrary
       curl_setopt($ch, CURLINFO_HEADER_OUT, true);
       $output = curl_exec($ch);
       $info = curl_getinfo($ch);
-      $header_len = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-      $header = substr($output, 0, $header_len);
-      $body = substr($output, $header_len);
+      $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+      $header = substr($output, 0, $header_size);
+      $body = substr($output, $header_size);
+      $statusMsg=explode(" ",substr($output, 0, $header_size));
       curl_close($ch);
       $responseSchema["headers"] = $header;
       $responseSchema["statusCode"] = $info["http_code"];
-      $responseSchema["statusMessage"] = "";
+      $responseSchema["statusMessage"] = $statusMsg[2];
       $responseSchema["body"] = $body;
       return $responseSchema;
       }
@@ -65,10 +66,11 @@ class yappesLibrary
       $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
       $header = substr($output, 0, $header_size);
       $body = substr($output, $header_size);
+      $statusMsg=explode(" ",substr($output, 0, $header_size));
       curl_close($ch);
       $responseSchema["headers"] = $header;
       $responseSchema["statusCode"] = $info["http_code"];
-      $responseSchema["statusMessage"] = "";
+      $responseSchema["statusMessage"] = $statusMsg[2];
       $responseSchema["body"] = $body;
       return $responseSchema;
       }
@@ -106,10 +108,11 @@ class yappesLibrary
       $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
       $header = substr($output, 0, $header_size);
       $body = substr($output, $header_size);
+      $statusMsg=explode(" ",substr($output, 0, $header_size));
       curl_close($ch);
       $responseSchema["headers"] = $header;
       $responseSchema["statusCode"] = $info["http_code"];
-      $responseSchema["statusMessage"] = "";
+      $responseSchema["statusMessage"] = $statusMsg[2];
       $responseSchema["body"] = $body;
       return $responseSchema;
       }
@@ -142,13 +145,14 @@ class yappesLibrary
       curl_setopt($ch, CURLINFO_HEADER_OUT, true);
       $output = curl_exec($ch);
       $info = curl_getinfo($ch);
-      $header_len = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-      $header = substr($output, 0, $header_len);
-      $body = substr($output, $header_len);
+      $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+      $header = substr($output, 0, $header_size);
+      $body = substr($output, $header_size);
+      $statusMsg=explode(" ",substr($output, 0, $header_size));
       curl_close($ch);
       $responseSchema["headers"] = $header;
       $responseSchema["statusCode"] = $info["http_code"];
-      $responseSchema["statusMessage"] = "";
+      $responseSchema["statusMessage"] = $statusMsg[2];
       $responseSchema["body"] = $body;
       return $responseSchema;
       }
@@ -187,10 +191,11 @@ class yappesLibrary
       $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
       $header = substr($output, 0, $header_size);
       $body = substr($output, $header_size);
+      $statusMsg=explode(" ",substr($output, 0, $header_size));
       curl_close($ch);
       $responseSchema["headers"] = $header;
       $responseSchema["statusCode"] = $info["http_code"];
-      $responseSchema["statusMessage"] = "";
+      $responseSchema["statusMessage"] = $statusMsg[2];
       $responseSchema["body"] = $body;
       return $responseSchema;
       }
