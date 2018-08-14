@@ -1,10 +1,13 @@
 <?php
-require("../ypconnector.php");
+require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
+use Core\Connector\YappesLibrary;
+
+
 function getOperationCheck(){
-    $ypObj = new yappesLibrary();  
+    $yappesToken="Your X-Yappes-Key";
+    $ypObj = new YappesLibrary($yappesToken);  
 $head= array(
-    "Content-Type:"."application/json", 
-    "X-Yappes-Key:".""
+    "Content-Type"=>"application/json"
   );
 $api_request_parameters = ["headers" => $head, "queryparams" => "", "payload" => []];
 $getObj=$ypObj->getOperation("http://localhost:8081/getdata",$api_request_parameters);
@@ -14,10 +17,10 @@ assert($body["name"]=="getUser");
 }
 
 function postOperationCheck(){
-    $ypObj = new yappesLibrary();  
+    $yappesToken="Your X-Yappes-Key";
+    $ypObj = new YappesLibrary($yappesToken);  
 $head= array(
-    "Content-Type:"."application/json", 
-    "X-Yappes-Key:".""
+    "Content-Type"=>"application/json"
   );
 $api_request_parameters = ["headers" => $head, "queryparams" => "", "payload" => []];
 $postObj=$ypObj->postOperation("http://localhost:8081/postdata",$api_request_parameters);
@@ -27,10 +30,10 @@ assert($body["name"]=="addUser");
 }
 
 function putOperationCheck(){
-    $ypObj = new yappesLibrary();  
+    $yappesToken="Your X-Yappes-Key";
+    $ypObj = new YappesLibrary($yappesToken);   
     $head= array(
-    "Content-Type:"."application/json", 
-    "X-Yappes-Key:".""
+    "Content-Type"=>"application/json"
   );
     $api_request_parameters = ["headers" => $head, "queryparams" => "", "payload" => []];
     $putObj=$ypObj->putOperation("http://localhost:8081/putdata",$api_request_parameters);
@@ -41,10 +44,10 @@ function putOperationCheck(){
 
 
 function deleteOperationCheck(){
-    $ypObj = new yappesLibrary();  
+    $yappesToken="Your X-Yappes-Key";
+    $ypObj = new YappesLibrary($yappesToken);  
     $head= array(
-    "Content-Type:"."application/json", 
-    "X-Yappes-Key:".""
+    "Content-Type"=>"application/json"
   );
     $api_request_parameters = ["headers" => $head, "queryparams" => "", "payload" => []];
     $deleteObj=$ypObj->deleteOperation("http://localhost:8081/deletedata",$api_request_parameters);
@@ -55,10 +58,10 @@ function deleteOperationCheck(){
 
 
 function patchOperationCheck(){
-    $ypObj = new yappesLibrary();  
+    $yappesToken="Your X-Yappes-Key";
+    $ypObj = new YappesLibrary($yappesToken);  
     $head= array(
-    "Content-Type:"."application/json", 
-    "X-Yappes-Key:".""
+    "Content-Type"=>"application/json"
   );
     $api_request_parameters = ["headers" => $head, "queryparams" => "", "payload" => []];
     $patchObj=$ypObj->patchOperation("http://localhost:8081/patchdata",$api_request_parameters);
