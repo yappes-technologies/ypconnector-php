@@ -310,8 +310,13 @@ class Ypconnector
      format array("Header: <value>") required for Curl operation*/
     public function call($url, $parameters)
     {
-      
-      $requestMethod = $parameters["method"];
+      if(isset($parameters["method"])&&$parameters["method"]!="")
+      {
+            $requestMethod = $parameters["method"];
+      }
+      else{
+         throw new Exception('Method not Available in parameters');
+      }
 
       $allowedMethod = ["get","post","put","delete","patch"];
 
