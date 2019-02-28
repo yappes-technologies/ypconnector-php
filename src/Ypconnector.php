@@ -40,6 +40,7 @@ class Ypconnector
       }
     try
       {
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_HEADER, true);
@@ -89,18 +90,19 @@ class Ypconnector
         $ypUrl = $url;
       }
 
-    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "get", "headers" => $parameters["headers"]];
+    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "post", "headers" => $parameters["headers"]];
     if (!$options["port"])
       {
       $options["port"] = 443;
       }
     try
       {
+      $payload=json_encode($parameters["payload"]);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters["payload"]);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $parameters["headers"]);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $ypHeaders);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_VERBOSE, 1);
       curl_setopt($ch, CURLOPT_HEADER, 1);
@@ -148,19 +150,20 @@ class Ypconnector
         $ypUrl = $url;
       }
 
-    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "get", "headers" => $parameters["headers"]];
+    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "put", "headers" => $parameters["headers"]];
     if (!$options["port"])
       {
       $options["port"] = 443;
       }
     try
       {
+      $payload=json_encode($parameters["payload"]);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters["payload"]);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $parameters["headers"]);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $ypHeaders]);
       curl_setopt($ch, CURLOPT_NOBODY, false);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -208,19 +211,21 @@ class Ypconnector
         $ypUrl = $url;
       }
 
-    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "get", "headers" => $parameters["headers"]];
+    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "delete", "headers" => $parameters["headers"]];
     if (!$options["port"])
       {
       $options["port"] = 443;
       }
     try
       {
+      $payload=json_encode($parameters["payload"]);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_HEADER, true);
       curl_setopt($ch, CURLOPT_NOBODY, false);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $parameters["headers"]);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $ypHeaders);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -266,19 +271,20 @@ class Ypconnector
         $ypUrl = $url;
       }
 
-    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "get", "headers" => $parameters["headers"]];
+    $options = ["host" => parse_url($ypUrl, PHP_URL_HOST) , "path" => parse_url($ypUrl, PHP_URL_PATH) , "port" => parse_url($ypUrl, PHP_URL_PORT) , "method" => "patch", "headers" => $parameters["headers"]];
     if (!$options["port"])
       {
       $options["port"] = 443;
       }
     try
       {
+      $payload=json_encode($parameters["payload"]);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters["payload"]);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $parameters["headers"]);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $ypHeaders);
       curl_setopt($ch, CURLOPT_NOBODY, false);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -343,12 +349,13 @@ class Ypconnector
       }
     try
       {
+      $payload=json_encode($parameters["payload"]);
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters["payload"]);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $parameters["headers"]);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $requestMethod);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $ypHeaders);
       curl_setopt($ch, CURLOPT_NOBODY, false);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
