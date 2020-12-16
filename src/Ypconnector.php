@@ -95,9 +95,17 @@ class Ypconnector
       {
       $options["port"] = 443;
       }
+
     try
       {
-      $payload=json_encode($parameters["payload"]);
+
+      if ($parameters["headers"]["Content-Type"]=='application/xml')
+        {
+        $payload=$parameters["payload"][array_keys($parameters["payload"])[0]];      
+        } else {
+        $payload=json_encode($parameters["payload"]);
+        }
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_POST, 1);
@@ -155,9 +163,17 @@ class Ypconnector
       {
       $options["port"] = 443;
       }
+      
     try
       {
-      $payload=json_encode($parameters["payload"]);
+
+      if ($parameters["headers"]["Content-Type"]=='application/xml')
+        {
+        $payload=$parameters["payload"][array_keys($parameters["payload"])[0]];      
+        } else {
+        $payload=json_encode($parameters["payload"]);
+        }
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -216,9 +232,17 @@ class Ypconnector
       {
       $options["port"] = 443;
       }
+
     try
       {
-      $payload=json_encode($parameters["payload"]);
+
+      if ($parameters["headers"]["Content-Type"]=='application/xml')
+        {
+        $payload=$parameters["payload"][array_keys($parameters["payload"])[0]];      
+        } else {
+        $payload=json_encode($parameters["payload"]);
+        }
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_HEADER, true);
@@ -276,9 +300,17 @@ class Ypconnector
       {
       $options["port"] = 443;
       }
+
     try
       {
-      $payload=json_encode($parameters["payload"]);
+
+      if ($parameters["headers"]["Content-Type"]=='application/xml')
+        {
+        $payload=$parameters["payload"][array_keys($parameters["payload"])[0]];      
+        } else {
+        $payload=json_encode($parameters["payload"]);
+        }
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -347,9 +379,17 @@ class Ypconnector
       {
       $options["port"] = 443;
       }
+
     try
       {
-      $payload=json_encode($parameters["payload"]);
+
+      if ($parameters["headers"]["Content-Type"]=='application/xml')
+        {
+        $payload=$parameters["payload"][array_keys($parameters["payload"])[0]];      
+        } else {
+        $payload=json_encode($parameters["payload"]);
+        }
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $ypUrl);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
